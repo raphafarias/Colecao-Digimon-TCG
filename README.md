@@ -49,7 +49,7 @@ O código foi arquitetado seguindo boas práticas de divisão de responsabilidad
 ### 2. Banco de Dados
 Crie o banco de dados e a tabela necessária executando o seguinte script no seu terminal MySQL ou Workbench:
 
-```sql
+SQL
 CREATE DATABASE IF NOT EXISTS digimon_tcg;
 USE digimon_tcg;
 
@@ -62,3 +62,34 @@ CREATE TABLE IF NOT EXISTS cartas (
     quantidade INT DEFAULT 0,
     PRIMARY KEY (codigo)
 );
+
+### 3. Configurar Conexão Local
+No arquivo src/main/java/com/digimontcg/CartaDAO.java, insira as credenciais do seu servidor MySQL local:
+
+URL: "jdbc:mysql://localhost:3306/digimon_tcg?..."
+
+USUÁRIO: "SEU_USUARIO"
+
+SENHA: "SUA_SENHA_AQUI"
+
+### 4. Executar o Aplicativo
+Compile e execute o projeto utilizando o Maven através dos seguintes comandos no seu terminal:
+
+mvn clean compile
+
+mvn exec:java -Dexec.mainClass="com.digimontcg.App"
+
+📝 Como Utilizar o Sistema
+Tela Inicial: Ao iniciar, o programa abrirá no Dashboard. Na primeira execução, os contadores estarão zerados.
+
+Acessar o Painel: Clique em Abrir Coleção / Registro para acessar o gerenciador principal.
+
+Alimentar o Sistema: Clique no botão Sincronizar API Completa para preencher o banco de dados local com todas as cartas disponíveis na API oficial.
+
+Filtros Dinâmicos: Utilize o campo de texto para filtrar cartas pelo nome ou clique na caixinha Ver somente minha coleção para exibir apenas o que você já registrou.
+
+Previsualização e Estoque: Selecione qualquer linha para visualizar a arte da carta na lateral direita. Utilize os botões + Adicionar à Coleção e - Remover da Coleção para alterar a quantidade de cópias físicas que você possui na estante.
+
+Atualização em Tempo Real: Clique em Voltar ao Menu para retornar à Dashboard e conferir os números totais atualizados instantaneamente.
+
+Prontinho! Juntando as duas partes, seu repositório vai ficar super profissional e completo no GitHub.
